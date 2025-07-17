@@ -138,16 +138,16 @@ SKN14-3rd-2Team/
 │
 ├── 📁 image/                             # 결과 이미지 또는 시각화 자료
 │
-├── 📁 test_result/                       # 테스트 결과 저장 폴더
+├── 📁 test_result/                       # rag 기법, 챗봇 답변 내용 체크 등 테스트 결과 저장 폴더
 │
 ├── 📁 utils1/                            # 핵심 로직 및 유틸리티 패키지
 │   ├── 📁 faiss_index3/                  # FAISS 벡터 인덱스 저장소 1 - 회계기준서 벡터 db => 파일 크기가 커서 github에 올라가지 않음
 │   ├── 📁 faiss_index_bge_m3/            # FAISS 벡터 인덱스 저장소 2 (bge-m3 모델 기반) - 사업보고서 벡터 db (실제 서비스에 사용X) => 파일 크기가 커서 github에 올라가지 않음
 │   ├── __init__.py                       # 패키지 초기화 파일
 │   ├── api_get.py                        # Dart 외부 API 데이터를 안전하게 불러오는 함수
-│   ├── chain_setting.py                  # LangChain/LangGraph 체인 및 프롬프트 설정
+│   ├── chain_setting.py                  # LangChain 체인 및 프롬프트 설정
 │   ├── corp_list.json                    # 기업 코드 목록 (JSON 데이터)
-│   ├── handle_node.py                    # LangGraph의 각 노드(Node) 로직 정의
+│   ├── handle_node.py                    # LangCahin의 각 노드(Node) 로직 정의
 │   ├── main.py                           # 전체 RAG 흐름을 제어하는 메인 컨트롤러
 │   ├── normalize_code_search.py          # 기업명/코드 검색 및 정규화 처리
 │   └── retreiver_setting.py              # Retriever 객체 생성 및 설정
@@ -155,7 +155,7 @@ SKN14-3rd-2Team/
 ├── .env                                  # 환경변수 설정 파일
 ├── .gitignore                            # Git 추적 제외 설정
 ├── LICENSE                               # 라이선스 파일
-├── README.md                             # 프로젝트 개요 및 사용법
+├── README.md                             # 프로젝트 개요 및 내용
 ├── requirements.txt                      # 프로젝트 의존 라이브러리 목록
 └── test.py                               # Streamlit 웹 애플리케이션 실행 파일
 ```
