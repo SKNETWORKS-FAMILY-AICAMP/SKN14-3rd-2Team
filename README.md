@@ -128,20 +128,33 @@
 ### 📁 프로젝트 폴더 구조
 
 SKN14-3rd-2Team/
+
 ├── 📁 01_data_preprocessing/              # 데이터 수집 및 벡터화 코드 정리
-│   ├── 📁 account_data/
-│   ├── 📁 clients/
-│   ├── 📁 processors/
-│   ├── 📁 rag/
-│   ├── 📁 services/
+│   ├── 📁 account_data/                   
+│   ├── 📁 clients/                        
+│   │   └── dart_client.py                # DART API 클라이언트 모듈
+│
+│   ├── 📁 processors/                     
+│   │   ├── document_processor.py         # 문서 처리 모듈
+│   │   ├── document_loader.py            # PDF, CSV 문서 로더
+│   │   ├── document_saver.py             # 문서 저장
+│   │   └── vector_store.py               # 벡터 저장
+│
+│   ├── 📁 rag/                            
+│   │   ├── bulk_processor.py             # 배치 처리 로직
+│   │   └── company_resolver.py           # 기업코드 유효성 체크
+│
+│   ├── 📁 services/                       
+│   │   └── document_service.py           # 문서 생성, 처리, 관리 비즈니스 로직
+│
 │   ├── Dart_open_api_loading.ipynb        # DART Open API로 재무제표 수집하는 코드
 │   ├── account_faiss_vectordb_setting.ipynb  # 회계 기준서 벡터 DB 생성 노트북
-│   ├── bulk_config.py
+│   ├── bulk_config.py                    # 대량 처리 설정 모듈
 │   ├── config.py
-│   ├── corp_list.json                     # 기업명-코드 매핑 JSON 파일
-│   ├── llm.py
+│   ├── corp_list.json                    # 기업명-코드 매핑 JSON 파일
+│   ├── llm.py                            # LangChain 기반 LLM 래퍼 클래스
 │   ├── main.py
-│   ├── orchestrator.py
+│   ├── orchestrator.py                   # 전체 흐름을 조율하는 오케스트레이터
 │   └── upload_companies_2023.py
 │
 ├── 📁 02_system_architecture/             # 시스템 구조도, 설계 문서 등
