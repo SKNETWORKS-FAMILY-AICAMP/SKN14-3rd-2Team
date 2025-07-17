@@ -141,8 +141,8 @@ SKN14-3rd-2Team/
 ├── 📁 test_result/                       # 테스트 결과 저장 폴더
 │
 ├── 📁 utils1/                            # 핵심 로직 및 유틸리티 패키지
-│   ├── 📁 faiss_index3/                  # FAISS 벡터 인덱스 저장소 1 - 회계기준서 벡터 db
-│   ├── 📁 faiss_index_bge_m3/            # FAISS 벡터 인덱스 저장소 2 (bge-m3 모델 기반) - 사업보고서 벡터 db (실제 서비스에 사용X)
+│   ├── 📁 faiss_index3/                  # FAISS 벡터 인덱스 저장소 1 - 회계기준서 벡터 db => 파일 크기가 커서 github에 올라가지 않음
+│   ├── 📁 faiss_index_bge_m3/            # FAISS 벡터 인덱스 저장소 2 (bge-m3 모델 기반) - 사업보고서 벡터 db (실제 서비스에 사용X) => 파일 크기가 커서 github에 올라가지 않음
 │   ├── __init__.py                       # 패키지 초기화 파일
 │   ├── api_get.py                        # Dart 외부 API 데이터를 안전하게 불러오는 함수
 │   ├── chain_setting.py                  # LangChain/LangGraph 체인 및 프롬프트 설정
