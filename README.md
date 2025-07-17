@@ -144,7 +144,7 @@ SKN14-3rd-2Team/
 │   ├── 📁 faiss_index3/                  # FAISS 벡터 인덱스 저장소 1 - 회계기준서 벡터 db
 │   ├── 📁 faiss_index_bge_m3/            # FAISS 벡터 인덱스 저장소 2 (bge-m3 모델 기반) - 사업보고서 벡터 db (실제 서비스에 사용X)
 │   ├── __init__.py                       # 패키지 초기화 파일
-│   ├── api_get.py                        # 외부 API 키를 안전하게 불러오는 함수
+│   ├── api_get.py                        # Dart 외부 API 데이터를 안전하게 불러오는 함수
 │   ├── chain_setting.py                  # LangChain/LangGraph 체인 및 프롬프트 설정
 │   ├── corp_list.json                    # 기업 코드 목록 (JSON 데이터)
 │   ├── handle_node.py                    # LangGraph의 각 노드(Node) 로직 정의
