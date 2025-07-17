@@ -125,40 +125,72 @@
 <hr>
 
 ```markdown
+### 📁 프로젝트 폴더 구조
+
 SKN14-3rd-2Team/
 
-├── 📁 data_preprocessing/                 # 데이터 수집 및 전처리 관련 파일
-│   ├── 📁 account_data/                   # 회계 정보 원본 데이터
-│   ├── 📁 business_data/                  # 사업 정보 원본 데이터
-│   ├── account_faiss_vectordb_setting.ipynb   # 회계 데이터 FAISS 벡터화 노트북
-│   ├── Dart_open_api_loading.ipynb            # DART Open API 데이터 수집 노트북
-│   └── corp_list.json                          # 기업 코드 JSON 데이터
+├── 📁 01_data_preprocessing/              # 데이터 수집 및 벡터화 코드 정리
+│   ├── 📁 account_data/                   
+│   ├── 📁 clients/                        
+│   │   └── dart_client.py                # DART API 클라이언트 모듈
 │
-├── 📁 icon/                              # 아이콘 등 UI 리소스
+│   ├── 📁 processors/                     
+│   │   ├── document_processor.py         # 문서 처리 모듈
+│   │   ├── document_loader.py            # PDF, CSV 문서 로더
+│   │   ├── document_saver.py             # 문서 저장
+│   │   └── vector_store.py               # 벡터 저장
 │
-├── 📁 image/                             # 결과 이미지 또는 시각화 자료
+│   ├── 📁 rag/                            
+│   │   ├── bulk_processor.py             # 배치 처리 로직
+│   │   └── company_resolver.py           # 기업코드 유효성 체크
 │
-├── 📁 test_result/                       # rag 기법, 챗봇 답변 내용 체크 등 테스트 결과 저장 폴더
+│   ├── 📁 services/                       
+│   │   └── document_service.py           # 문서 생성, 처리, 관리 비즈니스 로직
 │
-├── 📁 utils1/                            # 핵심 로직 및 유틸리티 패키지
-│   ├── 📁 faiss_index3/                  # FAISS 벡터 인덱스 저장소 1 - 회계기준서 벡터 db => 파일 크기가 커서 github에 올라가지 않음
-│   ├── 📁 faiss_index_bge_m3/            # FAISS 벡터 인덱스 저장소 2 (bge-m3 모델 기반) - 사업보고서 벡터 db (실제 서비스에 사용X) => 파일 크기가 커서 github에 올라가지 않음
-│   ├── __init__.py                       # 패키지 초기화 파일
-│   ├── api_get.py                        # Dart 외부 API 데이터를 안전하게 불러오는 함수
-│   ├── chain_setting.py                  # LangChain 체인 및 프롬프트 설정
-│   ├── corp_list.json                    # 기업 코드 목록 (JSON 데이터)
-│   ├── handle_node.py                    # LangCahin의 각 노드(Node) 로직 정의
-│   ├── main.py                           # 전체 RAG 흐름을 제어하는 메인 컨트롤러
-│   ├── normalize_code_search.py          # 기업명/코드 검색 및 정규화 처리
-│   └── retreiver_setting.py              # Retriever 객체 생성 및 설정
+│   ├── Dart_open_api_loading.ipynb        # DART Open API로 재무제표 수집하는 코드
+│   ├── account_faiss_vectordb_setting.ipynb  # 회계 기준서 벡터 DB 생성 노트북
+│   ├── bulk_config.py                    # 대량 처리 설정 모듈
+│   ├── config.py
+│   ├── corp_list.json                    # 기업명-코드 매핑 JSON 파일
+│   ├── llm.py                            # LangChain 기반 LLM 래퍼 클래스
+│   ├── main.py
+│   ├── orchestrator.py                   # 전체 흐름을 조율하는 오케스트레이터
+│   └── upload_companies_2023.py
 │
-├── .env                                  # 환경변수 설정 파일
-├── .gitignore                            # Git 추적 제외 설정
-├── LICENSE                               # 라이선스 파일
-├── README.md                             # 프로젝트 개요 및 내용
-├── requirements.txt                      # 프로젝트 의존 라이브러리 목록
-└── test.py                               # Streamlit 웹 애플리케이션 실행 파일
+├── 📁 02_system_architecture/             # 시스템 구조도, 설계 문서 등
+│
+├── 📁 03_test_report/                     # RAG 실험 결과, 성능 비교 보고 등
+│
+├── 📁 icon/                               # UI 아이콘 리소스
+│
+├── 📁 image/                              # 결과 시각화 이미지
+│
+├── 📁 utils1/                             # 핵심 RAG 실행 로직 및 유틸리티 모듈
+│   ├── 📁 faiss_index3/                   # 회계기준서 벡터 DB (GitHub 제외)
+│   │   └── 🔗 [Google Drive에서 다운로드]
+│   ├── 📁 faiss_index_bge_m3/             # 사업보고서 벡터 DB (GitHub 제외)
+│   │   └── 🔗 [Google Drive에서 다운로드]
+│   ├── __init__.py
+│   ├── api_get.py                         # DART API 재무 데이터 수집 함수
+│   ├── chain_setting.py                   # LangChain 체인 및 프롬프트 정의
+│   ├── corp_list.json                     # 기업 코드 JSON
+│   ├── handle_node.py                     # 질문 분류 후 처리 노드 모음
+│   ├── main.py                            # 전체 RAG 파이프라인 제어
+│   ├── normalize_code_search.py           # 기업명 → 코드 정규화
+│   └── retreiver_setting.py               # 벡터 검색기(Retriever) 설정
+│
+├── .env                                   # 환경변수 설정
+├── .gitignore                             # Git 추적 제외 파일 목록
+├── LICENSE                                # 오픈소스 라이선스
+├── README.md                              # 프로젝트 설명 문서
+├── requirements.txt                       # 의존 라이브러리 목록
+└── test.py                                # Streamlit 실행 엔트리포인트
 ```
+
+> 🔗 **FAISS 벡터 DB 다운로드 링크**
+> - [faiss_index3 (회계기준서 벡터 DB) / faiss_index_bge_m3 (사업보고서 벡터 DB)](https://drive.google.com/drive/folders/19y5kH1-mgCo3-0_Rbuxq3gCFL7zoI9ar?usp=sharing)
+
+
 <hr>
 
 ## 4️⃣ 시스템 아키텍처
@@ -205,7 +237,7 @@ SKN14-3rd-2Team/
 ##  5️⃣ 중요 코드 설명
 #### 1. `api_get.py`
 - `get_financial_state(corp_code, bsns_year, reprt_code, fs_div)`: DART 서버에 접속해 특정 회사의 해당 연도 재무제표 데이터를 API로 요청하고, 
-그 결과를 사람이 읽기 좋은 문자열 리스트로 가공하여 반환합니다.
+그 결과를 LLM 프롬프트에 넣을 수 있는 문자열 리스트로 가공하여 반환합니다.
 - **파일 요약**: 외부 금융감독원(DART) 서버와 통신하여 실시간 재무제표 데이터를 가져오는 역할을 담당합니다.
 성공 시 가공된 데이터를, 실패 시 에러 메시지를 반환합니다.
 
